@@ -119,9 +119,9 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(35),
               child: Text(
                 count.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 100,
-                  color: Colors.purple,
+                  color: count >= limitUp ? Colors.red : Colors.purple,
                 ),
               ),
             ),
@@ -129,9 +129,11 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: count == 0 ? null : decrement,
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: count == 0
+                        ? Colors.white.withOpacity(0.2)
+                        : Colors.white,
                     fixedSize: const Size(80, 80),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
@@ -150,9 +152,11 @@ class _HomePageState extends State<HomePage> {
                   width: 35,
                 ),
                 TextButton(
-                  onPressed: increment,
+                  onPressed: count >= limitUp ? null : increment,
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: count >= limitUp
+                        ? Colors.white.withOpacity(0.2)
+                        : Colors.white,
                     fixedSize: const Size(80, 80),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
