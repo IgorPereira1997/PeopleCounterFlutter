@@ -50,9 +50,9 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/img/imagem.jpg'),
-            fit: BoxFit.cover,
-          ),
+              image: AssetImage('assets/img/imagem.jpg'),
+              fit: BoxFit.cover,
+              opacity: 0.5),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(
                       fontSize: 25,
                       color: Colors.black,
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                   DropdownButton<int>(
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                           style: const TextStyle(
                             fontSize: 25,
                             color: Colors.black,
-                            fontWeight: FontWeight.w800,
+                            fontWeight: FontWeight.w900,
                           ),
                         ),
                       );
@@ -106,13 +106,15 @@ class _HomePageState extends State<HomePage> {
                   ? (count > limitUp
                       ? 'Local lotado! Remova ' +
                           (count - limitUp).toString() +
-                          ' pessoas!'
+                          ((count - limitUp) == 1 ? ' pessoa!' : ' pessoas!')
                       : 'Local Lotado!')
                   : 'Pode entrar!',
               style: TextStyle(
                 fontSize: 26,
-                color: count >= limitUp ? Colors.red : Colors.green,
-                fontWeight: FontWeight.w700,
+                color: count >= limitUp
+                    ? Colors.red
+                    : const Color.fromRGBO(22, 163, 3, 1),
+                fontWeight: FontWeight.w900,
               ),
             ),
             Padding(
